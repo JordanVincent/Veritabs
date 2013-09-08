@@ -18,7 +18,7 @@
   ],
 
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["js/background.js"],
     "persistent": true
   },
 
@@ -26,7 +26,7 @@
     {
       "matches": ["<all_urls>"],
       "css": ["style.css"],
-      "js": ["jquery.js", "jqueryui.js", "script.js"],
+      "js": ["lib/jquery.js", "lib/jqueryui.js", "js/script.js"],
       "run_at": "document_end"
     }
   ],
@@ -37,7 +37,7 @@
       "38": "img/icons/icon38.png"     
     },
     "default_title": "Veritabs",      
-    "default_popup": "popup/popup.html"        
+    "default_popup": "views/popup.html"        
   },
 
   "web_accessible_resources": [
