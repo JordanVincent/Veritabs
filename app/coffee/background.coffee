@@ -91,7 +91,7 @@ chrome.extension.onMessage.addListener (request, sender, sendResponse) ->
     refreshTab null
 
   else if request.type is "init"
-    # Nothing 
+    console.log() # Nothing
   sendResponse state: state
 
 
