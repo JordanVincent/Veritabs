@@ -16,7 +16,7 @@ state =
     right: false # true if the bar is positioned at the right
 
 # Open storage
-loadState ->
+loadState = ->
   refreshTab null
 
 # Connexion established 
@@ -159,10 +159,12 @@ refreshTab = (tabId) ->
 # Save the state of the extension in local storage
 saveState = ->
   state.settings = false
+  console.log chrome.storage
   chrome.storage.sync.set
     state: state
   , ->
-    console.error "error ?", chrome.runtime.lastError
+    if chrome.runtime.lastError
+      console.error "error ?", chrome.runtime.lastError
 
 
 # TODO catch error
@@ -177,12 +179,4 @@ loadState = (callback) ->
       console.log state
       console.error "error ?", chrome.runtime.lastError
       callback.call this  if callback isnt "undefined"
-
-
-
-
-
-
-
-
 

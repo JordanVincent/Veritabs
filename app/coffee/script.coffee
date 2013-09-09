@@ -23,29 +23,59 @@
       right: false
   
   # Create the sidebar
-  $("body").before "<div id=\"t_sidebar\" style=\"width:" + state.width + ";\" >" + "<div id=\"t_inner\">" + "<div id=\"t_panel\">" + "<div id=\"t_topPanel\">" + "<div id=\"t_topPanelFullS\" >" + "<div id=\"t_prevBtn\" class=\"t_barBtn\"></div>" + "<div id=\"t_nextBtn\" class=\"t_barBtn\"></div>" + "<div id=\"t_reloadBtn\" class=\"t_barBtn\"></div>" + "<div id=\"t_homeBtn\" class=\"t_barBtn\"></div>" + "</div>" + "<div id=\"t_topPanelCommon\">" + "<div id=\"t_fixBtn\" class=\"t_barBtn\"></div>" + "<div id=\"t_newBtn\" class=\"t_barBtn\"></div>" + "<div id=\"t_resizeBtn\" class=\"t_barBtn\"></div>" + "</div>" + "</div>" + "<div id=\"t_content\" >" + "<div id=\"t_tabContainer\"></div>" + "</div>" + "<div id=\"t_bottomPanel\" >" + "<div id=\"t_settingsBtn\" class=\"t_barBtn\"></div>" + "<div id=\"t_spacerBtn\" class=\"t_barBtn t_spacer\"></div>" + "<div id=\"t_tinyModeBtn\" class=\"t_barBtn\"></div>" + "</div>" + "</div>" + "<div id=\"t_handler\" ></div>" + "</div>" + "</div>"
+  $("body").before """
+    <div id="t_sidebar" style="width:" """ + state.width + """ > 
+      <div id="t_inner">
+        <div id="t_panel"> 
+          <div id="t_topPanel"> """ +
+            # <div id="t_topPanelFullS" > 
+            #   <div id="t_prevBtn" class="t_barBtn"></div> 
+            #   <div id="t_nextBtn" class="t_barBtn"></div>
+            #   <div id="t_reloadBtn" class="t_barBtn"></div> 
+            #   <div id="t_homeBtn" class="t_barBtn"></div> 
+            # </div> 
+            """
+            <div id="t_topPanelCommon"> 
+              <div id="t_fixBtn" class="t_barBtn"></div> 
+              <div id="t_newBtn" class="t_barBtn"></div> 
+              <div id="t_resizeBtn" class="t_barBtn"></div>      
+            </div> 
+          </div> 
+          <div id="t_content" > 
+            <div id="t_tabContainer"></div> 
+          </div> 
+          <div id="t_bottomPanel" > 
+            <div id="t_settingsBtn" class="t_barBtn"></div> 
+            <div id="t_spacerBtn" class="t_barBtn t_spacer"></div> 
+            <div id="t_tinyModeBtn" class="t_barBtn"></div> 
+          </div> 
+        </div> 
+        <div id="t_handler" ></div>
+      </div>
+    </div>
+    """
 
   
   # DOM elements
-  $sidebar = $("#t_sidebar")
-  $inner = $("#t_inner")
-  $panel = $("#t_panel")
-  $content = $("#t_content")
-  $tabContainer = $("#t_tabContainer")
-  $topPanel = $("#t_topPanel")
-  $topPanelFullS = $("#t_topPanelFullS")
+  $sidebar        = $("#t_sidebar")
+  $inner          = $("#t_inner")
+  $panel          = $("#t_panel")
+  $content        = $("#t_content")
+  $tabContainer   = $("#t_tabContainer")
+  $topPanel       = $("#t_topPanel")
+  $topPanelFullS  = $("#t_topPanelFullS")
   $topPanelCommon = $("#t_topPanelCommon")
-  $bottomPanel = $("#t_bottomPanel")
-  $prevBtn = $("#t_prevBtn")
-  $nextBtn = $("#t_nextBtn")
-  $reloadBtn = $("#t_reloadBtn")
-  $homeBtn = $("#t_homeBtn")
-  $fixBtn = $("#t_fixBtn")
-  $newBtn = $("#t_newBtn")
-  $resizeBtn = $("#t_resizeBtn")
-  $settingsBtn = $("#t_settingsBtn")
-  $spacerBtn = $("#t_spacerBtn")
-  $tinyModeBtn = $("#t_tinyModeBtn")
+  $bottomPanel    = $("#t_bottomPanel")
+  $prevBtn        = $("#t_prevBtn")
+  $nextBtn        = $("#t_nextBtn")
+  $reloadBtn      = $("#t_reloadBtn")
+  $homeBtn        = $("#t_homeBtn")
+  $fixBtn         = $("#t_fixBtn")
+  $newBtn         = $("#t_newBtn")
+  $resizeBtn      = $("#t_resizeBtn")
+  $settingsBtn    = $("#t_settingsBtn")
+  $spacerBtn      = $("#t_spacerBtn")
+  $tinyModeBtn    = $("#t_tinyModeBtn")
   
   #//////////////// EVENTS //////////////////
   
@@ -186,8 +216,42 @@
     $settingsBtn.addClass "active"
     $("html > *").not("head").css "-webkit-filter", "blur(2px)"
     
-    #'<label><input type="checkbox" name="" value=""><span>Only show when too many tabs</span></label>'+
-    $("body").before "<div id=\"t_overlay\" >" + "<div id=\"t_settings\">" + "<div id=\"t_settingsHeader\">" + "<h1>Veritabs</h1>" + "<h2>Organize your tabs vertically</h2>" + "</div>" + "<div id=\"t_settingsContent\">" + "<div id=\"t_settingsNavigation\" >" + "<ul>" + "<li class=\"active\" anchor=\"settings\" >Settings</li>" + "<li anchor=\"news\" >Comming soon</li>" + "</ul>" + "</div>" + "<div id=\"t_settingsDetails\" >" + "<div class=\"t_settingsPanel\" anchor=\"settings\">" + "<h2>Settings</h2>" + "<label><input type=\"checkbox\" " + ((if state.options.right then "checked=\"checked\"" else "")) + "\" name=\"right\" value=\"\"><span>Attach the bar to the right side of the screen</span></label>" + "</div>" + "<div class=\"t_settingsPanel\" style=\"display:none;\" anchor=\"news\">" + "<h2>Comming Soon</h2>" + "<p>List of new features coming soon:</p>" + "<ul>" + "<li>Groups of tabs</li>" + "<li>Enhancing the full screen experience</li>" + "</ul>" + "</div>" + "</div>" + "</div>" + "<div id=\"t_copyright\">This plugin has been designed and developed by <a href=\"http://jordan-vincent.com\" target=\"_blank\">Jordan Vincent</a>.<br>&copy; 2013 Jordan Vincent All Rights Reserved.</div>" + "</div>" + "</div>"
+    $("body").before """
+      <div id="t_overlay" > 
+        <div id="t_settings"> 
+          <div id="t_settingsHeader"> 
+            <h1>Veritabs</h1> 
+            <h2>Organize your tabs vertically</h2> 
+          </div> 
+          <div id="t_settingsContent"> 
+            <div id="t_settingsNavigation" > 
+              <ul> 
+                <li class="active" anchor="settings" >Settings</li> 
+                <li anchor="news" >Comming soon</li> 
+              </ul> 
+            </div> 
+            <div id="t_settingsDetails" > 
+              <div class="t_settingsPanel" anchor="settings"> 
+                <h2>Settings</h2> 
+                <label><input type="checkbox" """ + (if state.options.right then 'checked="checked"' else '') + """ name="right" value="">
+                  <span>Attach the bar to the right side of the screen</span>
+                </label> 
+              </div> 
+              <div class="t_settingsPanel" style="display:none;" anchor="news"> 
+                <h2>Coming Soon</h2> 
+                <p>New features coming soon:</p> 
+                <ul> 
+                  <li>Groups of tabs</li> 
+                  <li>Enhancing the full screen experience</li> 
+                </ul> 
+              </div> 
+            </div> 
+          </div> 
+          <div id="t_copyright">This plugin has been designed and developed by <a href="http://jordan-vincent.com" target="_blank">Jordan Vincent</a>.<br>&copy; 2013 Jordan Vincent All Rights Reserved.</div> 
+        </div> 
+      </div>
+    """
+    
     $overlay = $("#t_overlay")
     $overlay.fadeIn()
     
