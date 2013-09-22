@@ -207,101 +207,101 @@
   #//////////////// TOOL BOX //////////////////
   
   # Creates the settings page
-  openSettingsPage = ->
-    state.settings = true
-    port.postMessage
-      type: "settings"
-      settings: state.settings
+  # openSettingsPage = ->
+  #   state.settings = true
+  #   port.postMessage
+  #     type: "settings"
+  #     settings: state.settings
 
-    $settingsBtn.addClass "active"
-    $("html > *").not("head").css "-webkit-filter", "blur(2px)"
+  #   $settingsBtn.addClass "active"
+  #   $("html > *").not("head").css "-webkit-filter", "blur(2px)"
     
-    $("body").before """
-      <div id="t_overlay" > 
-        <div id="t_settings"> 
-          <div id="t_settingsHeader"> 
-            <h1>Veritabs</h1> 
-            <h2>Organize your tabs vertically</h2> 
-          </div> 
-          <div id="t_settingsContent"> 
-            <div id="t_settingsNavigation" > 
-              <ul> 
-                <li class="active" anchor="settings" >Settings</li> 
-                <li anchor="news" >Comming soon</li> 
-              </ul> 
-            </div> 
-            <div id="t_settingsDetails" > 
-              <div class="t_settingsPanel" anchor="settings"> 
-                <h2>Settings</h2> 
-                <label><input type="checkbox" """ + (if state.options.right then 'checked="checked"' else '') + """ name="right" value="">
-                  <span>Attach the bar to the right side of the screen</span>
-                </label> 
-              </div> 
-              <div class="t_settingsPanel" style="display:none;" anchor="news"> 
-                <h2>Coming Soon</h2> 
-                <p>New features coming soon:</p> 
-                <ul> 
-                  <li>Groups of tabs</li> 
-                  <li>Enhancing the full screen experience</li> 
-                </ul> 
-              </div> 
-            </div> 
-          </div> 
-          <div id="t_copyright">This plugin has been designed and developed by <a href="http://jordan-vincent.com" target="_blank">Jordan Vincent</a>.<br>&copy; 2013 Jordan Vincent All Rights Reserved.</div> 
-        </div> 
-      </div>
-    """
+  #   $("body").before """
+  #     <div id="t_overlay" > 
+  #       <div id="t_settings"> 
+  #         <div id="t_settingsHeader"> 
+  #           <h1>Veritabs</h1> 
+  #           <h2>Organize your tabs vertically</h2> 
+  #         </div> 
+  #         <div id="t_settingsContent"> 
+  #           <div id="t_settingsNavigation" > 
+  #             <ul> 
+  #               <li class="active" anchor="settings" >Settings</li> 
+  #               <li anchor="news" >Comming soon</li> 
+  #             </ul> 
+  #           </div> 
+  #           <div id="t_settingsDetails" > 
+  #             <div class="t_settingsPanel" anchor="settings"> 
+  #               <h2>Settings</h2> 
+  #               <label><input type="checkbox" """ + (if state.options.right then 'checked="checked"' else '') + """ name="right" value="">
+  #                 <span>Attach the bar to the right side of the screen</span>
+  #               </label> 
+  #             </div> 
+  #             <div class="t_settingsPanel" style="display:none;" anchor="news"> 
+  #               <h2>Coming Soon</h2> 
+  #               <p>New features coming soon:</p> 
+  #               <ul> 
+  #                 <li>Groups of tabs</li> 
+  #                 <li>Enhancing the full screen experience</li> 
+  #               </ul> 
+  #             </div> 
+  #           </div> 
+  #         </div> 
+  #         <div id="t_copyright">This plugin has been designed and developed by <a href="http://jordan-vincent.com" target="_blank">Jordan Vincent</a>.<br>&copy; 2013 Jordan Vincent All Rights Reserved.</div> 
+  #       </div> 
+  #     </div>
+  #   """
     
-    $overlay = $("#t_overlay")
-    $overlay.fadeIn()
+  #   $overlay = $("#t_overlay")
+  #   $overlay.fadeIn()
     
-    # Click on the buttons on the navigation panel
-    $("#t_settingsNavigation li").click ->
-      anchor = $(this).attr("anchor")
-      $("#t_settingsNavigation li").removeClass "active"
-      $(this).addClass "active"
-      $(".t_settingsPanel").hide()
-      $(".t_settingsPanel[anchor=\"" + anchor + "\"]").show()
+  #   # Click on the buttons on the navigation panel
+  #   $("#t_settingsNavigation li").click ->
+  #     anchor = $(this).attr("anchor")
+  #     $("#t_settingsNavigation li").removeClass "active"
+  #     $(this).addClass "active"
+  #     $(".t_settingsPanel").hide()
+  #     $(".t_settingsPanel[anchor=\"" + anchor + "\"]").show()
 
     
-    # Click on a setting option
-    $("#t_settingsDetails input").change ->
-      optionName = $(this).attr("name")
-      optionValue = $(this).is(":checked")
+  #   # Click on a setting option
+  #   $("#t_settingsDetails input").change ->
+  #     optionName = $(this).attr("name")
+  #     optionValue = $(this).is(":checked")
       
-      # set the state to the new value
-      if optionName
-        state.options[optionName] = optionValue
-        port.postMessage
-          type: "settingsOptions"
-          options: state.options
+  #     # set the state to the new value
+  #     if optionName
+  #       state.options[optionName] = optionValue
+  #       port.postMessage
+  #         type: "settingsOptions"
+  #         options: state.options
 
-      fixToRightSide state.options.right
-      tabsHoverHandler()
+  #     fixToRightSide state.options.right
+  #     tabsHoverHandler()
 
     
-    # Quit settings page
-    $overlay.click (e) ->
-      closeSettingsPage()  if e.target is $overlay[0]
+  #   # Quit settings page
+  #   $overlay.click (e) ->
+  #     closeSettingsPage()  if e.target is $overlay[0]
 
   
-  # Removes the settings page
-  closeSettingsPage = ->
-    $overlay = $("#t_overlay")
-    $settingsBtn.removeClass "active"
+  # # Removes the settings page
+  # closeSettingsPage = ->
+  #   $overlay = $("#t_overlay")
+  #   $settingsBtn.removeClass "active"
 
-    $overlay.fadeOut 400, ->
-      $overlay.remove()
-      $("html > *").not("head").css "-webkit-filter", "blur(0px)"
-      state.settings = false
-      console.log state
-      port.postMessage
-        type: "settings"
-        settings: state.settings
+  #   $overlay.fadeOut 400, ->
+  #     $overlay.remove()
+  #     $("html > *").not("head").css "-webkit-filter", "blur(0px)"
+  #     state.settings = false
+  #     console.log state
+  #     port.postMessage
+  #       type: "settings"
+  #       settings: state.settings
 
-  # Returns true if the settings page is open
-  isSettingsPageOpen = ->
-    (if $("#t_overlay").size() isnt 0 then true else false)
+  # # Returns true if the settings page is open
+  # isSettingsPageOpen = ->
+  #   (if $("#t_overlay").size() isnt 0 then true else false)
   
   # Reconnect the port when disconnected
   reConnectPort = ->

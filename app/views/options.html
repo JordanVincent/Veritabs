@@ -1,0 +1,52 @@
+<!-- Copyright (c) 2013 Jordan Vincent. All rights reserved. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Organize your tabs vertically" />
+    <title>Veritabs | Options</title>
+    <link rel="stylesheet" type="text/css" href="../styles/options.css" media="screen" />
+    
+  </head>
+  <body>
+   
+    <div id="t_settings"> 
+      <div id="t_settingsHeader"> 
+        <h1>Veritabs</h1> 
+        <h2>Organize your tabs vertically</h2> 
+      </div> 
+      <div id="t_settingsContent"> 
+        <div id="t_settingsNavigation" > 
+          <ul> 
+            <li class="active" anchor="settings" >Settings</li> 
+            <li anchor="news" >Coming soon</li> 
+            <li >Credits</li> 
+            <li >FAQ</li>
+          </ul> 
+        </div> 
+        <div id="t_settingsDetails" > 
+          <div class="t_settingsPanel" anchor="settings"> 
+            <h2>Settings</h2> 
+            <label><input type="checkbox" """ + (if state.options.right then 'checked="checked"' else '') + """ name="right" value="">
+              <span>Attach the bar to the right side of the screen</span>
+            </label> 
+          </div> 
+          <div class="t_settingsPanel" style="display:none;" anchor="news"> 
+            <h2>Coming Soon</h2> 
+            <p>New features coming soon:</p> 
+            <ul> 
+              <li>Groups of tabs</li> 
+              <li>Enhancing the full screen experience</li> 
+            </ul> 
+          </div> 
+        </div> 
+      </div> 
+      <div id="t_copyright">This plugin has been designed and developed by <a href="http://jordan-vincent.com" target="_blank">Jordan Vincent</a>.<br>&copy; 2013 Jordan Vincent All Rights Reserved.</div> 
+    </div> 
+   
+  </body>
+  <script type="text/javascript" src="../js/options.js"></script>
+
+</html>
