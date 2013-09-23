@@ -1,2 +1,5 @@
 Veritabs
 ========
+
+#### Running
+* ``grunt watch``

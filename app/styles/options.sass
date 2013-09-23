@@ -2,99 +2,92 @@
 
 body
   margin: 0
-
-#t_settings
   font-family: 'Segoe UI', Tahoma, sans-serif !important
 
-#t_settingsHeader
+#header
   background-color: #222
   color: white
-  padding: 10px 20px
+  padding: 20px
+
+  img
+    float: left
+    margin-right: 40px
 
   h1
-    font-size: 2em
+    font-size: 2.5em
     font-weight: bold
+    margin: 10px 0
   h2
     font-style: italic
     font-weight: normal
     font-size: 1.23em
-    padding-left: 40px
+    padding-left: 200px
 
-#t_settingsContent
-  color: black
+.tabbable
   display: -webkit-box
   -webkit-box-flex: 1
   -webkit-box-orient: horizontal
 
-#t_settingsNavigation
-  padding: 20px 0
-  margin-top: 40px
-
-  ul
+  ul.nav
     list-style: none
     margin: 0
-    padding: 0
+    padding: 10px 0
 
-  li
-    border-left: 5px solid transparent
-    color: #777
-    padding: 5px 15px
-    cursor: pointer
-    margin: 0
+    li
+      border-left: 5px solid transparent
+      color: #777
+      padding: 5px 15px
+      cursor: pointer
+      margin: 0
 
-    &.active
-      border-left-color: #333
-      color: #333
+      &.active
+        border-left-color: #333
+        color: #333
+   
+     
+  .tab-content
+    display: -webkit-box
+    -webkit-box-flex: 1
+    -webkit-box-orient: horizontal
+    padding: 10px 20px 20px 20px
 
-#t_settingsDetails
-  -webkit-box-flex: 1
-  padding: 10px 20px 20px 20px
-
-  ul
-    padding-left: 40px
-    list-style: disc
-
-  input[type='checkbox']
-    -webkit-appearance: none
-    -webkit-user-select: none
-    background-image: -webkit-linear-gradient(#f0f0f0, #f0f0f0 38%, #e0e0e0)
-    border-color: rgba(0, 0, 0, 0.3)
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.95)
-    width: 13px
-    height: 13px
-    border: 1px solid rgba(0, 0, 0, 0.25)
-    border-radius: 2px
-    margin: 0 5px 0 0
-    padding: 0
-    bottom: 2px
-    position: relative
-    vertical-align: middle
-
-    &:checked::before
-      -webkit-user-select: none
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAcklEQVQY02NgwA/YoJgoEA/Es4DYgJBCJSBeD8SboRinBiYg7kZS2IosyQ/Eakh8LySFq4FYHFlxGRBvBOJYqMRqJMU+yApNkSRAeC0Sux3dfSCTetE0wKyXxOWhMKhTYIr9CAUXyJMzgLgBagBBgDPGAI2LGdNt0T1AAAAAAElFTkSuQmCC')
-      background-size: 100% 100%
-      content: ''
-      display: block
-      height: 100%
+    .tab-pane
+      display: none
       width: 100%
 
-  label
+      &.active
+        display: block
+
+      h2
+        font-weight: normal
+        font-size: 1.4em
+        margin: 0 0 20px 0
+        padding: 0 0 10px 0
+        border-bottom: 1px solid #DDD
+
+// General
+
+input[type='checkbox']
+  -webkit-appearance: none
+  -webkit-user-select: none
+  background-image: -webkit-linear-gradient(#f0f0f0, #f0f0f0 38%, #e0e0e0)
+  border-color: rgba(0, 0, 0, 0.3)
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.95)
+  width: 13px
+  height: 13px
+  border: 1px solid rgba(0, 0, 0, 0.25)
+  border-radius: 2px
+  margin: 0 5px 0 0
+  padding: 0
+  bottom: 2px
+  position: relative
+  vertical-align: middle
+
+  &:checked::before
+    -webkit-user-select: none
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAcklEQVQY02NgwA/YoJgoEA/Es4DYgJBCJSBeD8SboRinBiYg7kZS2IosyQ/Eakh8LySFq4FYHFlxGRBvBOJYqMRqJMU+yApNkSRAeC0Sux3dfSCTetE0wKyXxOWhMKhTYIr9CAUXyJMzgLgBagBBgDPGAI2LGdNt0T1AAAAAAElFTkSuQmCC')
+    background-size: 100% 100%
+    content: ''
     display: block
-    margin: 1em 0
-    color: black
-
-  p
-    margin: 1em 0
-    color: black
-    
-  h2
-    font-weight: normal
-    font-size: 1.4em
-    margin: 0 0 20px 0
-    padding: 0 0 10px 0
-    border-bottom: 1px solid #DDD
-
-#t_copyright
-  color: #A2A2A2
-  padding: 20px
+    height: 100%
+    width: 100%
