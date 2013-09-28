@@ -28,7 +28,21 @@
     {
       "matches": ["<all_urls>"],
       "css": ["styles/style.css"],
-      "js": ["lib/jquery.js", "lib/jqueryui.js", "js/script.js"],
+      "js": [
+        "lib/jquery.js", 
+        "lib/jqueryui.js", 
+        "lib/angular.js",
+        "js/script/app.js",
+
+        "js/script/controllers/panel_controller.js",
+        "js/script/directives/resize.js",
+        "js/script/directives/show.js",
+        "js/script/directives/tab_hover.js",
+        "js/script/services/port.js",
+        "js/script/filters/icon.js",
+
+        "js/script/launch.js"
+      ],
       "run_at": "document_end"
     }
   ],

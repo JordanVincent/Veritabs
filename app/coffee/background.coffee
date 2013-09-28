@@ -42,6 +42,9 @@ class Background
         # TODO cleaning
         if msg.type is "init"
 
+        else if msg.type is 'state'
+          @state = msg.state
+
         else if msg.type is "openSideBar"
           @state.visible = true
 

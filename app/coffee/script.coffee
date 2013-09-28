@@ -1,30 +1,26 @@
 # Copyright (c) 2013 Jordan Vincent. All rights reserved.
 (($) ->
   
-  # The current state of the plugin
-  # either the extension is active or not
-  # State opened/closed of the bar
-  # Either the bar is fixed or not
-  # Width of the bar
-  # Either the user is currently resizing the bar
-  # The settings page is open
-  # The tiny mode
-  # true if the bar is positioned at the right
   state =
-    tabs: []
-    active: true
-    visible: true
-    fixed: false
-    width: 200
-    resizing: false
-    settings: false
-    tiny: false
+    tabs: []        # The current state of the plugin
+    active:   true  # either the extension is active or not
+    visible:  true  # State opened/closed of the bar
+    fixed:    false # Either the bar is fixed or not
+    width:    200   # Width of the bar
+    resizing: false # Either the user is currently resizing the bar
+    settings: false # The settings page is open
+    tiny:     false # The tiny mode | deprecated
     options:
-      right: false
+      right:  false # true if the bar is positioned at the right
   
   # Create the sidebar
   $("body").before """
-    <div id="t_sidebar" style="width:" """ + state.width + """ > 
+    <div 
+      id="t_sidebar" 
+      ng-controller="PanelController" 
+      style="width:" """ + state.width + """ 
+      resize
+    > 
       <div id="t_inner">
         <div id="t_panel"> 
           <div id="t_topPanel"> """ +
@@ -36,24 +32,44 @@
             # </div> 
             """
             <div id="t_topPanelCommon"> 
-              <div id="t_fixBtn" class="t_barBtn"></div> 
-              <div id="t_newBtn" class="t_barBtn"></div> 
-              <div id="t_resizeBtn" class="t_barBtn"></div>      
+              <div id="t_fixBtn" class="t_barBtn" ng-click="clickFixBtn() ></div> 
+              <div id="t_newBtn" class="t_barBtn" ng-click="clickNewBtn() ></div> 
+              <div id="t_resizeBtn" class="t_barBtn" ng-click="clickResizeBtn() ></div>      
             </div> 
           </div> 
           <div id="t_content" > 
             <div id="t_tabContainer"></div> 
           </div> 
           <div id="t_bottomPanel" > 
-            <div id="t_settingsBtn" class="t_barBtn"></div> 
+            <div id="t_settingsBtn" class="t_barBtn" ng-click="clickSettingsBtn()" ></div> 
             <div id="t_spacerBtn" class="t_barBtn t_spacer"></div> 
-            <div id="t_tinyModeBtn" class="t_barBtn"></div> 
+            <div id="t_tinyModeBtn" class="t_barBtn" ng-click="clickTinyModeBtn()" ></div> 
           </div> 
         </div> 
         <div id="t_handler" ></div>
       </div>
     </div>
     """
+
+  window.Veritabs = angular.module('veritabs', [])
+
+  Veritabs.controller 'PanelController', ($scope) ->
+
+    $scope.state = {}
+
+    $scope.clickSettingsBtn = ->
+    $scope.clickTinyModeBtn = ->
+    $scope.clickResizeBtn = ->
+
+    $scope.clickNewBtn = ->
+      console.log port
+      port.postMessage type: "new"
+
+    $scope.clickFixBtn = ->
+
+
+  # To be executed at the end
+  angular.bootstrap $("#t_sidebar"), ['myApp']
 
   
   # DOM elements
@@ -63,114 +79,26 @@
   $content        = $("#t_content")
   $tabContainer   = $("#t_tabContainer")
   $topPanel       = $("#t_topPanel")
-  $topPanelFullS  = $("#t_topPanelFullS")
+  # $topPanelFullS  = $("#t_topPanelFullS")
   $topPanelCommon = $("#t_topPanelCommon")
   $bottomPanel    = $("#t_bottomPanel")
-  $prevBtn        = $("#t_prevBtn")
-  $nextBtn        = $("#t_nextBtn")
-  $reloadBtn      = $("#t_reloadBtn")
-  $homeBtn        = $("#t_homeBtn")
-  $fixBtn         = $("#t_fixBtn")
-  $newBtn         = $("#t_newBtn")
-  $resizeBtn      = $("#t_resizeBtn")
-  $settingsBtn    = $("#t_settingsBtn")
+  # $prevBtn        = $("#t_prevBtn")
+  # $nextBtn        = $("#t_nextBtn")
+  # $reloadBtn      = $("#t_reloadBtn")
+  # $homeBtn        = $("#t_homeBtn")
+  $fixBtn         = $("#t_fixBtn") #
+  # $newBtn         = $("#t_newBtn") #
+  $resizeBtn      = $("#t_resizeBtn") #
+  $settingsBtn    = $("#t_settingsBtn") #
   $spacerBtn      = $("#t_spacerBtn")
-  $tinyModeBtn    = $("#t_tinyModeBtn")
+  $tinyModeBtn    = $("#t_tinyModeBtn") #
   
   #//////////////// EVENTS //////////////////
   
-  # Open the sidebar when the mouse hit the left border
-  # Close it if the mouse doesn't focus
-  
-  $("html").mousemove (e) ->
-    # Open
-    if mustOpenPanel(e.pageX)
-      state.visible = true
-      $sidebar.fadeIn()
-      port.postMessage type: "openSideBar"
-
-    # Close
-    else if mustClosePanel(e.pageX)
-      state.visible = false
-      $sidebar.fadeOut()
-      port.postMessage type: "closeSideBar"
-  
   # Buttons 
   
-  # Sticks the bar
-  $fixBtn.click ->
-    state.fixed = not state.fixed
-    setFixed state.fixed
-    port.postMessage
-      type: "fix"
-      fixed: state.fixed
   
-  # Fix or not the panel
-  setFixed = (fixed) ->
-    if fixed
-      $fixBtn.addClass "active"
-      $sidebar.show()
-    else
-      $fixBtn.removeClass "active"
-  
-  # Creates a new tab
-  $newBtn.click ->
-    console.log port
-    port.postMessage type: "new"
-  
-  # Resizes the panel
-  $resizeBtn.draggable
-    helper: ""
-    start: ->
-      state.resizing = true
-
-    drag: (e, ui) ->
-      if state.options.right
-        state.width = document.width - ui.offset.left
-        $sidebar.width state.width
-      else
-        state.width = ui.position.left + 15
-        $sidebar.width state.width
-
-    stop: ->
-      state.resizing = false
-      port.postMessage
-        type: "width"
-        width: state.width
-
-  
-  # Goes to the settings page
-  $settingsBtn.click ->
-    openSettingsPage()
-  
-  # Switch to Tiny Mode
-  $tinyModeBtn.click ->
-    state.tiny = not state.tiny
-    setTinyMode state.tiny
-    port.postMessage
-      type: "tiny"
-      tiny: state.tiny
-  
-  # Set the tiny mode
-  setTinyMode = (tiny) ->
-    if tiny
-      $tinyModeBtn.addClass "active"
-      $fixBtn.hide()
-      $resizeBtn.hide()
-      $settingsBtn.hide()
-      $spacerBtn.hide()
-      $sidebar.width 30
-
-    else
-      $tinyModeBtn.removeClass "active"
-      $fixBtn.show()
-      $resizeBtn.show()
-      $settingsBtn.show()
-      $spacerBtn.show()
-      $sidebar.width state.width
-
-    tabsHoverHandler()
-  
+ 
   # Scroolling through the panel
   window.onmousewheel = document.onmousewheel = (e) ->
     if $(e.srcElement).parents("#t_content").size() isnt 0 or $(e.srcElement).get(0) is $("#t_content").get(0)
@@ -462,15 +390,6 @@
       $topPanelCommon.css "-webkit-flex-direction", "row"
       $fixBtn.css "-webkit-transform", "none"
   
-  # Return true if the panel must close considering the value x of the mouse
-  # Params: x (integer)
-  mustClosePanel = (x) ->
-    (((not state.options.right and x > state.width) or (state.options.right and x < document.width - state.width)) and not state.fixed and not state.resizing and not state.settings and state.visible and not state.tiny) or not state.active # TODO manage the state.active better
   
-  # Return true if the panel must open considering the value x of the mouse
-  # Params: x (integer)
-  mustOpenPanel = (x) ->
-    ((((not state.options.right and x is 0) or (state.options.right and x >= document.width - 10)) and not state.settings and not state.visible) or state.tiny) and state.active # TODO manage the state.active better
-    
 
 )(jQuery) # Allow using the $ tag
