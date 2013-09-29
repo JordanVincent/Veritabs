@@ -1,17 +1,25 @@
 Veritabs.controller 'PanelController', ($scope, Port) ->
 
+    Port.connect()
     $scope.state = Port.state
-    
 
-    $scope.clickSettingsBtn = ->
-    $scope.clickTinyModeBtn = ->
-    $scope.clickResizeBtn = ->
+    $scope.$watch 'state', =>
+      Port.send 'state', 
+        state: $scope.state
+
+    $scope.optionsUrl = chrome.extension.getURL("views/options.html")
 
     $scope.clickNewBtn = ->
-      Port.send "new"
+      Port.send 'new'
 
-    $scope.clickFixBtn = ->
+    # Tab actions
 
     $scope.closeTab = (tab) ->
-      Port.send "close", 
+      console.log 'close'
+      Port.send 'close', 
+        id: tab.id
+
+    $scope.activateTab = (tab) ->
+      console.log 'activate'
+      Port.send 'activate', 
         id: tab.id

@@ -18,7 +18,10 @@
   ],
 
   "background": {
-    "scripts": ["js/background.js"],
+    "scripts": [
+      "lib/jquery.js",
+      "js/background.js"
+    ],
     "persistent": true
   },
 

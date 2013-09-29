@@ -12,9 +12,23 @@
         <div id="t_panel"> 
           <div id="t_topPanel"> 
             <div id="t_topPanelCommon"> 
-              <div ng-hide="state.tiny" id="t_fixBtn" class="t_barBtn" ng-click="state.fixed = !state.fixed" ng-class="{active:state.fixed}" ></div> 
-              <div id="t_newBtn" class="t_barBtn" ng-click="clickNewBtn()" ></div> 
-              <div ng-hide="state.tiny" id="t_resizeBtn" resize="state" class="t_barBtn"></div>      
+              <div 
+                id="t_fixBtn" class="t_barBtn" 
+                ng-hide="state.tiny" 
+                ng-click="state.fixed = !state.fixed" 
+                ng-class="{active:state.fixed}" >
+              </div> 
+              <div 
+                id="t_newBtn" 
+                class="t_barBtn" 
+                ng-click="clickNewBtn()" >
+              </div> 
+              <div 
+                id="t_resizeBtn"
+                ng-hide="state.tiny" 
+                resize="state" 
+                class="t_barBtn">
+              </div>      
             </div> 
           </div> 
           <div id="t_content" > 
@@ -25,8 +39,9 @@
                 class="t_item" 
                 ng-class="{active:tab.active}" 
                 ng-style="{'left': tab.hover && state.options.right ? -185 : 0 , 'width': tab.hover ? 200 : 'auto' }"
-                tab-hover="state"
                 ng-model="tab" 
+                ng-click="activateTab(tab)"
+                tab-hover="state"
               >
                 <img class="t_ico" ng-src="{{tab | icon}}">
                 <span class="t_title">{{tab.title}}</span>
@@ -36,9 +51,26 @@
             </div> 
           </div> 
           <div id="t_bottomPanel" > 
-            <div ng-hide="state.tiny" id="t_settingsBtn" class="t_barBtn" ng-click="clickSettingsBtn()" ></div> 
-            <div ng-hide="state.tiny" id="t_spacerBtn" class="t_barBtn t_spacer"></div> 
-            <div id="t_tinyModeBtn" class="t_barBtn" ng-click="state.tiny = ! state.tiny" ng-class="{active:state.tiny}" ></div> 
+            <a 
+              id="t_settingsBtn"
+              class="t_barBtn" 
+              ng-hide="state.tiny"  
+              ng-click="clickSettingsBtn()" 
+              ng-href="{{optionsUrl}}"
+              target="_blank"
+              >
+            </a> 
+            <div 
+              id="t_spacerBtn"
+              class="t_barBtn t_spacer"
+              ng-hide="state.tiny" >
+            </div> 
+            <div 
+              id="t_tinyModeBtn" 
+              class="t_barBtn" 
+              ng-click="state.tiny = ! state.tiny" 
+              ng-class="{active:state.tiny}" >
+            </div> 
           </div> 
         </div> 
         <div id="t_handler" ></div>
