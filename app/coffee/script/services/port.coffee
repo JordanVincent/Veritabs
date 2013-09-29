@@ -1,5 +1,6 @@
-Veritabs.service 'Port', ($rootScope) ->
+Veritabs.service 'Port', ($q, $rootScope) ->
 
+  isInit: false
   port:  {}
   state: {}
 
@@ -17,6 +18,7 @@ Veritabs.service 'Port', ($rootScope) ->
 
   # Port connexion
   connect: ->
+    deferred = $q.defer()
      
     @port = chrome.extension.connect()
     @port.postMessage type: "init"
@@ -27,10 +29,15 @@ Veritabs.service 'Port', ($rootScope) ->
 
       if msg.type is "state"
         angular.extend @state, msg.data.state
+        unless @isInit
+          @isInit = true
+          deferred.resolve @state 
   
     # Reconnect the port when disconnected
     @port.onDisconnect.addListener (a) =>
       @connect()
+
+    deferred.promise
 
   send: (type,data) ->
 

@@ -32,7 +32,10 @@
             </div> 
           </div> 
           <div id="t_content" > 
-            <div id="t_tabContainer">
+            <div 
+              id="t_tabContainer" 
+              ui-sortable="sortableOptions" 
+              ng-model="state.tabs" >
 
               <div 
                 ng-repeat="tab in state.tabs" 

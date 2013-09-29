@@ -68,6 +68,11 @@ class Background
     chrome.tabs.onActivated.addListener (activeInfo) =>
       @refreshTab activeInfo.tabId
 
+    # Refresh tab updated (loading complete)
+    chrome.tabs.onUpdated.addListener (activeInfo) =>
+      @refreshTab activeInfo.tabId
+
+
   # Returns the current tab, null if not found
   # Params: - callback (function(tab)) 
   getCurrentTab: (callback) ->

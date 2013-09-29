@@ -35,6 +35,7 @@
         "lib/jquery.js", 
         "lib/jqueryui.js", 
         "lib/angular.js",
+        "lib/ui-sortable.js",
         "js/script/app.js",
 
         "js/script/controllers/panel_controller.js",
