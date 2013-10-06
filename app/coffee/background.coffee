@@ -45,7 +45,7 @@ class Background
 
         # Actions
         switch type
-          when 'state'    then $.extend @state, data. state
+          when 'state'    then $.extend @state, data.state
           when 'new'      then chrome.tabs.create {}
           when 'close'    then chrome.tabs.remove data.id
           when 'activate' then chrome.tabs.highlight tabs: [data.id]

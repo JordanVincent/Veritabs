@@ -4,10 +4,6 @@ Veritabs.controller 'PanelController', ($scope, Port) ->
 
     $scope.state = Port.state
 
-    $scope.$watch 'state', =>
-      Port.send 'state', 
-        state: $scope.state
-
     $scope.optionsUrl = chrome.extension.getURL("views/options.html")
 
     $scope.sortableOptions =
@@ -42,3 +38,7 @@ Veritabs.controller 'PanelController', ($scope, Port) ->
       console.log 'activate'
       Port.send 'activate', 
         id: tab.id
+
+    $scope.refresh = ->
+      Port.send 'state', 
+        state: $scope.state

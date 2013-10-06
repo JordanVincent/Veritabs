@@ -27,6 +27,7 @@
                 id="t_resizeBtn"
                 ng-hide="state.tiny" 
                 resize="state" 
+                stop="refresh()"
                 class="t_barBtn">
               </div>      
             </div> 

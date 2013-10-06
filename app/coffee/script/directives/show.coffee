@@ -28,7 +28,7 @@ Veritabs.directive 'show', ->
           (
             ( not scope.state.options.right and x is 0 ) or 
             ( scope.state.options.right and x >= document.width - 10 )
-          ) and not scope.state.settings and not scope.state.visible
+          ) and not scope.state.visible
         ) or scope.state.tiny
       ) and scope.state.active # TODO manage the scope.state.active better
 
@@ -40,7 +40,7 @@ Veritabs.directive 'show', ->
         (
           ( not scope.state.options.right and x > scope.state.width ) or 
           ( scope.state.options.right and x < document.width - scope.state.width )
-        ) and not scope.state.fixed and not scope.state.resizing and not scope.state.settings and scope.state.visible and not scope.state.tiny
+        ) and not scope.state.fixed and not scope.state.resizing and scope.state.visible and not scope.state.tiny
       ) or not scope.state.active # TODO manage the scope.state.active better
     
           
