@@ -1,7 +1,7 @@
 # Copyright (c) 2013 Jordan Vincent. All rights reserved.
 (($) ->
 
-  window.Veritabs = angular.module('veritabs', ['ui.sortable'])
+  window.Veritabs = angular.module('veritabs', ['ui.sortable','perfect_scrollbar'])
 
   Veritabs.constant 'TINY_WIDTH', 30
 

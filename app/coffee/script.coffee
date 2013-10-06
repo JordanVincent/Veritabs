@@ -286,74 +286,7 @@
   removeTabs = ->
     $("#t_sidebar .t_item").remove()
   
-  # Handler for the click event on the tabs
-  tabsClickHandler = ->
-    $("#t_sidebar .t_item").click (e) ->
-      tabId = parseInt($(this).attr("tabId"))
-      if e.target is $(this).children(".close")[0]
-        port.postMessage
-          type: "close"
-          tabId: tabId
-
-        $(this).remove()
-      else
-        port.postMessage
-          type: "activate"
-          tabIndex: $(".t_item").index(this)
-
-
-  
-  # Handler for the hover event on the tabs
-  tabsHoverHandler = ->
-    if state.tiny
-      $("#t_sidebar .t_item").hover ((e) ->
-        $("#t_sidebar .t_item").width "auto"
-        $(this).width 200 # DOTO set anim to 200ms
-        if state.options.right
-          $("#t_sidebar .t_item").position().left = 0
-          $(this).css left: -185
-      ), (e) ->
-        $("#t_sidebar .t_item").width "auto"
-        $("#t_sidebar .t_item").css left: 0  if state.options.right
-
-    else
-      $("#t_sidebar .t_item").unbind "hover"
-  
-  # Handler for the click event on the tabs
-  tabsDragDropHandler = ->
-    $tabContainer.sortable
-      axis: "y"
-      revert: 300
-      scroll: false
-      helper: (e, elt) ->
-        elt.clone()
-
-      stop: (event, ui) ->
-        tab = ui.item
-        tabId = parseInt(tab.attr("tabId"))
-        newPos = $(".t_item").index(ui.item)
-        port.postMessage
-          type: "move"
-          tabId: tabId
-          posIndex: newPos
-
-
-      sort: (event, ui) ->
-        helperY = ui.helper.position().top
-        helperH = ui.helper.height()
-        h = $content.height()
-        posY = $tabContainer.position().top
-        margin = 40
-        
-        #console.log(helperY,posY,helperH);
-        
-        # List begining
-        if helperY - margin < -posY
-          scrollBy helperH * 5
-        
-        # List ending
-        else scrollBy -helperH * 5  if (helperY + helperH + margin) > (-posY + h)
-
+ 
   
   # Scrolls the tab container of dy px
   # params: dy: the number of pixel to scroll, negative to the bottom, positive to the top

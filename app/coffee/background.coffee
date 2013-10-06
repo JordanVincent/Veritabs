@@ -24,16 +24,17 @@ class Background
 
     # Connexion established 
     chrome.extension.onConnect.addListener (port) =>
+      tabId = port.sender.tab.id
 
       # Remove port when disconnected
       port.onDisconnect.addListener =>
-        delete @ports[port.sender.tab.id]
+        delete @ports[tabId]
 
       # Adding the port by its tab id
-      @ports[port.sender.tab.id] = port
+      @ports[tabId] = port
 
       # Init the tab
-      @refreshTab port.sender.tab.id
+      @refreshTab tabId
 
       # Message listener
       port.onMessage.addListener (msg) =>
@@ -52,7 +53,11 @@ class Background
 
         # Saving
         if type is 'state'
-          @saveState()  
+          @saveState() 
+
+        # Refreshing
+        if type in ['new','close']
+          @refreshTab tabId
 
     # Messages between the popup and the background
     chrome.extension.onMessage.addListener (request, sender, sendResponse) =>

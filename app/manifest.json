@@ -30,12 +30,18 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "css": ["styles/style.css"],
+      "css": [
+        "lib/perfect-scrollbar.css", 
+        "styles/style.css"
+      ],
       "js": [
         "lib/jquery.js", 
         "lib/jqueryui.js", 
         "lib/angular.js",
         "lib/ui-sortable.js",
+        "lib/perfect-scrollbar.js",
+        "lib/angular-perfect-scrollbar.js",
+
         "js/script/app.js",
 
         "js/script/controllers/panel_controller.js",

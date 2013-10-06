@@ -21,7 +21,7 @@
               <div 
                 id="t_newBtn" 
                 class="t_barBtn" 
-                ng-click="clickNewBtn()" >
+                ng-click="clickNewBtn()" >{{a}}
               </div> 
               <div 
                 id="t_resizeBtn"
@@ -31,11 +31,14 @@
               </div>      
             </div> 
           </div> 
-          <div id="t_content" > 
+          <div id="t_content"
+
+           > 
             <div 
               id="t_tabContainer" 
               ui-sortable="sortableOptions" 
-              ng-model="state.tabs" >
+              ng-model="state.tabs"
+              >
 
               <div 
                 ng-repeat="tab in state.tabs" 
@@ -43,12 +46,12 @@
                 ng-class="{active:tab.active}" 
                 ng-style="{'left': tab.hover && state.options.right ? -185 : 0 , 'width': tab.hover ? 200 : 'auto' }"
                 ng-model="tab" 
-                ng-click="activateTab(tab)"
+                ng-click="$parent.activateTab(tab)"
                 tab-hover="state"
               >
                 <img class="t_ico" ng-src="{{tab | icon}}">
-                <span class="t_title">{{tab.title}}</span>
-                <span class="close" ng-click="closeTab(tab)" ></span>
+                <span class="t_title">{{tab.title}}{{a}}</span>
+                <span class="close" ng-click="$parent.closeTab(tab)" ></span>
               </div>
 
             </div> 
