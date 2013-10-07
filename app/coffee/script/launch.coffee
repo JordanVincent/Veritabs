@@ -15,7 +15,7 @@
               <div 
                 id="t_fixBtn" class="t_barBtn" 
                 ng-hide="state.tiny" 
-                ng-click="state.fixed = !state.fixed" 
+                ng-click="state.fixed = !state.fixed; refresh();" 
                 ng-class="{active:state.fixed}" >
               </div> 
               <div 
@@ -75,7 +75,7 @@
             <div 
               id="t_tinyModeBtn" 
               class="t_barBtn" 
-              ng-click="state.tiny = ! state.tiny" 
+              ng-click="state.tiny = ! state.tiny; refresh();" 
               ng-class="{active:state.tiny}" >
             </div> 
           </div> 

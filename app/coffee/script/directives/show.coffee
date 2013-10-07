@@ -24,6 +24,7 @@ Veritabs.directive 'show', ->
     # Params: x (integer)
     mustOpenPanel = (x) ->
       (
+        scope.state.fixed or
         (
           (
             ( not scope.state.options.right and x is 0 ) or 
