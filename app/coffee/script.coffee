@@ -286,8 +286,6 @@
   removeTabs = ->
     $("#t_sidebar .t_item").remove()
   
- 
-  
   # Scrolls the tab container of dy px
   # params: dy: the number of pixel to scroll, negative to the bottom, positive to the top
   scrollBy = (dy) ->

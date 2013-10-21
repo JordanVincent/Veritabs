@@ -48,6 +48,7 @@
         "js/script/directives/resize.js",
         "js/script/directives/show.js",
         "js/script/directives/tab_hover.js",
+        "js/script/directives/scroll.js",
         "js/script/services/port.js",
         "js/script/filters/icon.js",
 
