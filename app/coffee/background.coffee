@@ -138,7 +138,6 @@ class Background
         currentTabs = @state.tabs
         state = items.state
         state.tabs = currentTabs
-        state.visible = false # TODO remove...
         console.log state
         $.extend @state, state
         console.error(chrome.runtime.lastError) if chrome.runtime.lastError

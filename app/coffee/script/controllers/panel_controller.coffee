@@ -24,8 +24,11 @@ Veritabs.controller 'PanelController', ($scope, Port) ->
           id: tab.id
           index: index
 
+
     $scope.clickNewBtn = ->
       Port.send 'new'
+
+
 
     # Tab actions
 

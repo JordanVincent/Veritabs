@@ -23,6 +23,7 @@ Veritabs.directive 'show', ->
     # Return true if the panel must open considering the value x of the mouse
     # Params: x (integer)
     mustOpenPanel = (x) ->
+      return false unless scope.state
       (
         scope.state.fixed or
         (
@@ -37,6 +38,7 @@ Veritabs.directive 'show', ->
     # Return true if the panel must close considering the value x of the mouse
     # Params: x (integer)
     mustClosePanel = (x) ->
+      return false unless scope.state
       (
         (
           ( not scope.state.options.right and x > scope.state.width ) or 

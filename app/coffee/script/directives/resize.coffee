@@ -26,8 +26,6 @@ Veritabs.directive 'resize', ->
       stop: ->
         scope.$apply scope.state.resizing = false
         scope.refreshFn()
-        # port.postMessage
-        #   type: "width"
-        #   width: scope.state.width
+        
 
      

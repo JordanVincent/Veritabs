@@ -28,8 +28,10 @@ Veritabs.service 'Port', ($q, $rootScope) ->
       console.log 'message', msg
 
       if msg.type is "state"
-        angular.extend @state, msg.data.state
-        unless @isInit
+        angular.extend @state, @cleanState msg.data.state
+        if @isInit
+          $rootScope.$apply() 
+        else 
           @isInit = true
           deferred.resolve @state 
   
@@ -40,7 +42,10 @@ Veritabs.service 'Port', ($q, $rootScope) ->
     deferred.promise
 
   send: (type,data) ->
-
     @port.postMessage 
       type: type
       data: data
+
+  cleanState: (state) ->
+    state.visible = false
+    state
