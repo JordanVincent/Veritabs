@@ -31,6 +31,7 @@ module.exports = (grunt) ->
       main:
         files: [
           {expand: true, cwd: '<%= folders.src %>/views/', src: ['**'], dest: '<%= folders.dest %>/views/'}
+          {expand: true, cwd: '<%= folders.src %>/components/', src: ['**'], dest: '<%= folders.dest %>/components/'}
           {expand: true, cwd: '<%= folders.src %>/lib/',   src: ['**'], dest: '<%= folders.dest %>/lib/'}
           {expand: true, cwd:'<%= folders.src %>/img/',    src: ['**'], dest: '<%= folders.dest %>/img/'}
           {expand: true, cwd: '<%= folders.src %>/',       src: ['manifest.json'], dest: '<%= folders.dest %>/'}

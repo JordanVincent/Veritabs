@@ -19,7 +19,8 @@
 
   "background": {
     "scripts": [
-      "lib/jquery.js",
+      "components/jquery/jquery.js",
+      "components/lodash/dist/lodash.js",
       "js/background.js"
     ],
     "persistent": true
@@ -35,12 +36,10 @@
         "styles/style.css"
       ],
       "js": [
-        "lib/jquery.js", 
-        "lib/jqueryui.js", 
-        "lib/angular.js",
+        "components/jquery/jquery.js",
+        "components/jquery-ui/ui/jquery-ui.js",
+        "components/angular/angular.js",
         "lib/ui-sortable.js",
-        "lib/perfect-scrollbar.js",
-        "lib/angular-perfect-scrollbar.js",
 
         "js/script/app.js",
 

@@ -121,28 +121,40 @@ class Background
   # TODO catch error
   # Save the state of the extension in local storage
   saveState: ->
-  
-    console.log chrome.storage
+
     chrome.storage.sync.set
-      state: @state
-    , ->
-      if chrome.runtime.lastError
-        console.error "error ?", chrome.runtime.lastError
+      state: @beforeSaveState()
+    , =>
+      @displayError()
 
 
   # TODO catch error
   # Load the state saved in local storage
   loadState: (callback) ->
     chrome.storage.sync.get "state", (items) =>
+      @displayError()
+
       if items and items.state
-        currentTabs = @state.tabs
-        state = items.state
-        state.tabs = currentTabs
-        console.log state
-        $.extend @state, state
-        console.error(chrome.runtime.lastError) if chrome.runtime.lastError
-        callback.call this  if callback isnt "undefined"
+        $.extend @state, @afterSaveState items.state
+        callback.call @ if callback
 
+  # Returns the state without the tabs, otherwise QUOTA_BYTES_PER_ITEM is exceded
+  beforeSaveState: ->
+    state = _.cloneDeep @state
+    delete state.tabs
+    state
 
+  # Returns the loaded state
+  afterSaveState: (state) ->
+    console.log state
+    delete state.tabs
+    state
+
+  # Logs the error if existing
+  displayError: ->
+    console.error chrome.runtime.lastError if chrome.runtime.lastError
+
+  getState: ->
+    @state
 
 window.Background = new Background

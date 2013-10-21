@@ -8,3 +8,4 @@ TODO
 node_modules
 build
 .sass-cache
+app/components
