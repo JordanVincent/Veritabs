@@ -26,46 +26,12 @@
       <div class="row">
 
         <ul class="nav nav-pills nav-stacked col-sm-1">
-          <li class="active"><a href="#">Settings</a></li>
-          <li><a href="#">Coming soon</a></li>
-          <li><a href="#">Credits</a></li>
+          <li ui-sref-active="active"><a ui-sref="settings">Settings</a></li>
+          <li ui-sref-active="active"><a ui-sref="coming-soon">Coming soon</a></li>
+          <li ui-sref-active="active"><a ui-sref="credits">Credits</a></li>
         </ul>
 
-        <div class="col-sm-11">
-          <div>
-            <h2>Settings</h2>
-
-            <label>
-              <input type="checkbox" ng-model="state.options.right">
-              <span>Attach the bar to the right</span>
-            </label>
-
-            <label>
-              <input type="checkbox" ng-model="state.options.fullscreen">
-              <span>Show only on fullscreen</span>
-            </label>
-
-          </div>
-          <div>
-            <h2>Coming soon</h2>
-
-            <p>New features coming soon:</p>
-            <ul>
-              <li>Groups of tabs</li>
-              <li>Enhancing the full screen experience</li>
-            </ul>
-
-          </div>
-          <div>
-            <h2>Credits</h2>
-
-            <div id="t_copyright">This plugin has been designed and developed by <a href="http://jordan-vincent.com" target="_blank">Jordan Vincent</a>.<br>&copy; 2013 Jordan Vincent, All Rights Reserved.</div>
-
-          </div>
-          <div heading="FAQ">
-            <h2>FAQ</h2>
-
-          </div>
+        <div class="col-sm-11" ui-view>
         </div>
       </div>
 
