@@ -6,10 +6,10 @@
   "version": "1.2.1",
   "minimum_chrome_version": "21.0",
 
-  "icons": { 
+  "icons": {
     "16": "img/icons/icon16.png",
     "48": "img/icons/icon48.png",
-    "128": "img/icons/icon128.png" 
+    "128": "img/icons/icon128.png"
   },
 
   "permissions": [
@@ -32,7 +32,6 @@
     {
       "matches": ["<all_urls>"],
       "css": [
-        "lib/perfect-scrollbar.css", 
         "styles/style.css"
       ],
       "js": [
@@ -58,12 +57,12 @@
   ],
 
   "browser_action": {
-    "default_icon": {                    
-      "19": "img/icons/icon19.png",    
-      "38": "img/icons/icon38.png"     
+    "default_icon": {
+      "19": "img/icons/icon19.png",
+      "38": "img/icons/icon38.png"
     },
-    "default_title": "Veritabs",      
-    "default_popup": "views/popup.html"        
+    "default_title": "Veritabs",
+    "default_popup": "views/popup.html"
   },
 
   "web_accessible_resources": [
@@ -86,7 +85,9 @@
     "img/reload-white.png",
     "img/three-squares-grey.png",
     "img/three-squares-white.png",
-    "img/icons/icon19off.png",    
-    "img/icons/icon38off.png"
+    "img/icons/icon19off.png",
+    "img/icons/icon38off.png",
+
+    "views/options.html"
   ]
 }
