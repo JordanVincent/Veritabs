@@ -9,7 +9,7 @@ module.exports = (grunt) ->
 
     watch:
       main:
-        files: ['<%= folders.src %>','<%= folders.src %>/**']
+        files: ['<%= folders.src %>*/**']
         tasks: ['build']
 
     coffee:

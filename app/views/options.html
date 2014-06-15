@@ -4,68 +4,79 @@
 <html lang="en">
 
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Organize your tabs vertically" />
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Organize your tabs vertically"/>
     <title>Veritabs | Options</title>
-    <link rel="stylesheet" type="text/css" href="../styles/options.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../components/bootstrap/dist/css/bootstrap.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../styles/options.css" media="screen"/>
   </head>
-  <body ng-app="options" ng-csp >
-   
-    <div id="settings" ng-controller="OptionsController" > 
 
-      <div id="header"> 
-        <img src="../img/icons/icon128.png" ></img>
-        <h1>Veritabs</h1> 
-        <h2>Organize your tabs vertically</h2> 
-      </div> 
-      
-      <tabset vertical="true" type="tabs">
-        <tab heading="Settings">
-          <h2>Settings</h2>
+  <body ng-app="options" ng-csp="">
 
-          <label>
-            <input type="checkbox" ng-model="state.options.right"  >
-            <span>Attach the bar to the right</span>
-          </label> 
+    <div id="settings" ng-controller="OptionsController" class="container-fluid">
 
-          <label>
-            <input type="checkbox" ng-model="state.options.fullscreen"  >
-            <span>Show only on fullscreen</span>
-          </label> 
+      <div id="header" class="row">
+        <img src="../img/icons/icon128.png" class="col-sm-1"></img>
+        <div class="col-sm-11">
+          <h1>Veritabs</h1>
+          <h2>Organize your tabs vertically</h2>
+        </div>
+      </div>
 
-        </tab>
-        <tab heading="Coming soon">
-          <h2>Coming soon</h2>
+      <div class="row">
 
-          <p>New features coming soon:</p> 
-          <ul> 
-            <li>Groups of tabs</li> 
-            <li>Enhancing the full screen experience</li> 
-          </ul> 
+        <ul class="nav nav-pills nav-stacked col-sm-1">
+          <li class="active"><a href="#">Settings</a></li>
+          <li><a href="#">Coming soon</a></li>
+          <li><a href="#">Credits</a></li>
+        </ul>
 
-        </tab>
-        <tab heading="Credits">
-          <h2>Credits</h2>
+        <div class="col-sm-11">
+          <div>
+            <h2>Settings</h2>
 
-          <div id="t_copyright">This plugin has been designed and developed by <a href="http://jordan-vincent.com" target="_blank">Jordan Vincent</a>.<br>&copy; 2013 Jordan Vincent, All Rights Reserved.</div> 
+            <label>
+              <input type="checkbox" ng-model="state.options.right">
+              <span>Attach the bar to the right</span>
+            </label>
 
-        </tab>
-        <tab heading="FAQ">
-          <h2>FAQ</h2>
+            <label>
+              <input type="checkbox" ng-model="state.options.fullscreen">
+              <span>Show only on fullscreen</span>
+            </label>
 
-        </tab>
-      </tabset>
+          </div>
+          <div>
+            <h2>Coming soon</h2>
 
-    </div> 
-   
+            <p>New features coming soon:</p>
+            <ul>
+              <li>Groups of tabs</li>
+              <li>Enhancing the full screen experience</li>
+            </ul>
+
+          </div>
+          <div>
+            <h2>Credits</h2>
+
+            <div id="t_copyright">This plugin has been designed and developed by <a href="http://jordan-vincent.com" target="_blank">Jordan Vincent</a>.<br>&copy; 2013 Jordan Vincent, All Rights Reserved.</div>
+
+          </div>
+          <div heading="FAQ">
+            <h2>FAQ</h2>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script type="text/javascript" src="../components/angular/angular.js"></script>
+    <script type="text/javascript" src="../components/jquery/jquery.js"></script>
+
+    <script type="text/javascript" src="../js/options.js"></script>
+    <script type="text/javascript" src="../js/options/options_controller.js"></script>
+
   </body>
-
-  <script type="text/javascript" src="../components/angular/angular.js"></script>
-  <script type="text/javascript" src="../components/jquery/jquery.js"></script>
-  <script type="text/javascript" src="../components/jquery-ui/ui/jquery-ui.js"></script>
-  <script type="text/javascript" src="../components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-
-  <script type="text/javascript" src="../js/options.js"></script>
-  <script type="text/javascript" src="../js/options/options_controller.js"></script>
 
 </html>

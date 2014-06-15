@@ -21,7 +21,7 @@
               <div
                 id="t_newBtn"
                 class="t_barBtn"
-                ng-click="clickNewBtn()" >{{a}}
+                ng-click="clickNewBtn()" >
               </div>
               <div
                 id="t_resizeBtn"
