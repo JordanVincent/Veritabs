@@ -20,7 +20,7 @@ Veritabs.controller 'PanelController', ($scope, Port) ->
         index = ui.item.index()
         tab   = $scope.state.tabs[index]
 
-        Port.send 'move', 
+        Port.send 'move',
           id: tab.id
           index: index
 
@@ -28,20 +28,18 @@ Veritabs.controller 'PanelController', ($scope, Port) ->
     $scope.clickNewBtn = ->
       Port.send 'new'
 
-
-
     # Tab actions
 
     $scope.closeTab = (tab) ->
       console.log 'close'
-      Port.send 'close', 
+      Port.send 'close',
         id: tab.id
 
     $scope.activateTab = (tab) ->
       console.log 'activate'
-      Port.send 'activate', 
+      Port.send 'activate',
         id: tab.id
 
     $scope.refresh = ->
-      Port.send 'state', 
+      Port.send 'state',
         state: $scope.state

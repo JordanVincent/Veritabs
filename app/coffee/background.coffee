@@ -22,7 +22,7 @@ class Background
     @loadState =>
       @refreshTab null
 
-    # Connexion established 
+    # Connexion established
     chrome.extension.onConnect.addListener (port) =>
       tabId = port.sender.tab.id
 
@@ -53,7 +53,7 @@ class Background
 
         # Saving
         if type is 'state'
-          @saveState() 
+          @saveState()
 
         # Refreshing
         if type in ['new','close']
@@ -79,7 +79,7 @@ class Background
 
 
   # Returns the current tab, null if not found
-  # Params: - callback (function(tab)) 
+  # Params: - callback (function(tab))
   getCurrentTab: (callback) ->
     chrome.tabs.query
       active: true
@@ -96,17 +96,18 @@ class Background
   refreshTab: (tabId) ->
     sendTabs = (tabId) =>
       chrome.tabs.query
-        
-        #windowType:"normal", 
+
+        #windowType:"normal",
         windowId: chrome.windows.WINDOW_ID_CURRENT
       , (tabs) =>
         @state.tabs = tabs
-        
+        console.log 'rzarzerze', @state
+
         # At the init, the port is not intentiated first
         if @ports[tabId]
           @ports[tabId].postMessage
             type: "state"
-            data: 
+            data:
               state: @state
 
     if tabId is "undefined" or not tabId?

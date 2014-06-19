@@ -1,10 +1,13 @@
 /* Preferences*/
 
+$nav-pill-color: #999
+$nav-pill-active-color: #222
+
 body
   margin: 0
   font-family: 'Segoe UI', Tahoma, sans-serif !important
 
-#header
+.options-header
   background-color: #222
   color: white
   padding-top: 20px
@@ -19,19 +22,37 @@ body
     font-weight: normal
     font-size: 1.23em
 
+.options-content
+  h2
+    margin: 5px 0 20px 0
+
+  .settings
+    .form-group
+      margin-bottom: 5px
+
+    label
+      font-weight: normal
+
 // General
 
 .nav-pills
   & > li
     border-left: 5px solid transparent
 
-    &.active
-      border-color: #222
+    & > a
+      color: $nav-pill-color
 
-    &.active, &:hover, &.active:hover
+    &.active, &.active:hover
+      border-color: $nav-pill-active-color
+
       & > a
         background-color: transparent
-        color: #222
+        color: $nav-pill-active-color
+
+    &:hover
+      & > a
+        background-color: transparent
+        color: $nav-pill-color
 
 
 input[type='checkbox']

@@ -1,18 +1,18 @@
 # Copyright (c) 2013 Jordan Vincent. All rights reserved.
 
-window.Options = angular.module("options", ['ui.router'])
+window.Options = angular.module('options', ['ngRoute'])
 
-Options.config ($stateProvider, $urlRouterProvider) ->
+Options.config ($routeProvider) ->
 
-  $urlRouterProvider.otherwise "/settings"
+  $routeProvider
+    .when('/settings',
+      templateUrl: 'partials/settings.html'
+      controller: 'SettingsController')
 
-  $stateProvider
-    .state('settings',
-      url: '/settings'
-      templateUrl: "partials/settings.html")
-    .state('coming-soon',
-      url: '/coming-soon'
-      templateUrl: "partials/coming-soon.html")
-    .state('credits',
-      url: '/credits'
-      templateUrl: "partials/credits.html")
+    .when('/coming-soon',
+      templateUrl: 'partials/coming-soon.html')
+
+    .when('/credits',
+      templateUrl: 'partials/credits.html')
+
+    .otherwise({ redirectTo: '/settings' })

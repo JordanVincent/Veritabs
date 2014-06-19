@@ -1,5 +1,4 @@
-Options.controller 'OptionsController', ($scope) ->
+Options.controller 'OptionsController', ($scope, $location) ->
 
-  chrome.runtime.getBackgroundPage (backgroundWindow) ->
-    $scope.$apply $scope.state = backgroundWindow.Background.getState()
-
+  $scope.isActive = (route) ->
+    route is $location.path()
