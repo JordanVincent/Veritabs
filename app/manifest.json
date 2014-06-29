@@ -21,6 +21,7 @@
     "scripts": [
       "components/jquery/jquery.js",
       "components/lodash/dist/lodash.js",
+      "js/background/local_storage.js",
       "js/background.js"
     ],
     "persistent": true
