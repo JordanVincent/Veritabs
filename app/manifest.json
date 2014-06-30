@@ -21,8 +21,10 @@
     "scripts": [
       "components/jquery/jquery.js",
       "components/lodash/dist/lodash.js",
-      "js/background/local_storage.js",
-      "js/background.js"
+      "js/background/data_storage.js",
+      "js/background/state.js",
+      "js/background/tabs_manager.js",
+      "js/background/background.js"
     ],
     "persistent": true
   },

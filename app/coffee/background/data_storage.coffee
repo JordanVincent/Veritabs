@@ -1,4 +1,4 @@
-class LocalStorage
+class DataStorage
 
   # TODO catch error
   # Save the state of the extension in local storage
@@ -30,4 +30,4 @@ class LocalStorage
   _displayError: ->
     console.error(chrome.runtime.lastError) if chrome.runtime.lastError
 
-window.LocalStorage = new LocalStorage
+window.DataStorage = new DataStorage
