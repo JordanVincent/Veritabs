@@ -21,15 +21,6 @@ $("#t_activateBtn").click ->
   , (response) ->
     window.close()
 
-# Btn settings
-
-$("#t_settingsBtn").click ->
-  chrome.extension.sendMessage
-    type: "settings"
-    settings: true
-  , (response) ->
-    window.close()
-
 # Activate or deactivate the extension
 activate = (active) ->
   if active
