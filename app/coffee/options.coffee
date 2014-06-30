@@ -12,7 +12,7 @@ Options.config ($routeProvider) ->
     .when('/coming-soon',
       templateUrl: 'partials/coming-soon.html')
 
-    .when('/credits',
-      templateUrl: 'partials/credits.html')
+    .when('/about',
+      templateUrl: 'partials/about.html')
 
     .otherwise({ redirectTo: '/settings' })

@@ -1,5 +1,3 @@
-# Copyright (c) 2013 Jordan Vincent. All rights reserved.
-
 class Background
   state: window.state
 
