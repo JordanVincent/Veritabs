@@ -33,7 +33,6 @@ Veritabs.controller 'PanelController', ($scope, $window, Port) ->
           id: tab.id
           index: index
 
-
     $scope.newTab = ->
       Port.send 'new'
 

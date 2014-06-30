@@ -31,5 +31,3 @@ Veritabs.directive 'scroll', ->
 
     getTabContainer = ->
       element.find '#t_tabContainer'
-
-
