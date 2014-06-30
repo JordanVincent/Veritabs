@@ -2,53 +2,44 @@
 
 body
   font-family: 'Segoe UI', Tahoma, sans-serif !important
-  min-width: 140px
+  min-width: 200px
   margin: 0px
   overflow: hidden
 
 h1
-  font-size: 1em
+  font-size: 1.5em
   margin: 0 0 3px 0
-  padding: 3px 8px
+  padding: 5px 16px
   color: white
-  background: -webkit-linear-gradient(top, #be0e0e 0%, #e31111 100%)
-  box-shadow: 0 0 0 1px #F56565, 0 0 0 3px #A30C0C
+  background: #be0e0e
   position: relative
-
-  &:before, &:after
-    padding: 3px 8px
-    content: attr(title)
-    color: rgba(255, 255, 255, 0.15)
-    position: absolute
-
-  &:before
-    top: 2px
-    left: 2px
-
-  &:after
-    top: 2px
-    left: 1px
 
 ul
   list-style: none
-  padding: 0 0 5px 0
+  padding: 0
   margin: 0
 
-li
-  cursor: pointer
-  padding: 3px 0px 3px 15px
-  border-radius: 3px
-  
-  &:hover
-    background-color: #EEE
+  li
+    cursor: pointer
+    padding: 8px 0px 8px 15px
+
+    &:hover
+      background-color: #EEE
 
 #inner
-  border: 1px solid #AFAFAF
-  border-top: 0
-  border-radius: 2px
   font-size: 0.8em
 
 #t_info
   font-style: italic
-  padding: 0 5px 5px 5px
+  padding: 10px
   font-weight: bold
+  color: #666
+
+#t_settingsBtn
+  padding: 0
+
+  a
+    text-decoration: none
+    padding: 8px 0px 8px 15px
+    color: black
+    display: block

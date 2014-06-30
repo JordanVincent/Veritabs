@@ -3,8 +3,9 @@
 releases
 screens
 splashs
-template.png
 TODO
 node_modules
 build
 .sass-cache
+app/components
+templates/

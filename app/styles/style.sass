@@ -4,19 +4,21 @@
 
 $img-path: "chrome-extension://__MSG_@@extension_id__/img"
 
-html
+html, body
   height: auto
 
 #t_sidebar
-  *
-    box-sizing: content-box
   height: 100%
-  background-color: rgba(136, 136, 136, 0.4)
-  box-shadow: rgba(50, 50, 50, 0.15) 1px 0px 10px
+  background-color: rgba(0, 0, 0, 0.1)
   position: fixed
   font-family: 'Segoe UI', Tahoma, sans-serif !important
   z-index: 2147483645
   display: none
+
+  -webkit-user-select: none
+  *
+    box-sizing: content-box
+
   div
     margin: 0
 
@@ -35,42 +37,43 @@ html
   /*height: 33px;*/
   background-color: #222
   position: relative
-  box-shadow: rgba(50, 50, 50, 0.3) 0px 2px 1px
   z-index: 2147483646
   display: -webkit-box
   -webkit-box-orient: vertical
   /*-webkit-box-orient: horizontal;*/
 
-#t_topPanelFullS
+#t_topPanelFullscreen
   height: 33px
   display: -webkit-flex
-  -webkit-box-orient: horizontal
+  -webkit-flex-direction: row
+  border-bottom: 1px solid #333
+  .t_barBtn
+    -webkit-flex: 1
+
+.t_barBtn
+  opacity: 0.3
+  cursor: pointer
+
+  &, &:hover, &:active, &.active
+    background-color: transparent
+
+  &:hover
+    opacity: 0.5
+
+  &:active, &.active
+    opacity: 1
 
 #t_prevBtn, #t_nextBtn
   width: 12px
-  background-image: url($img-path + '/arrow-grey.png')
+  background-image: url($img-path + '/arrow-white.png')
 
 #t_prevBtn
   -webkit-transform: scaleX(-1)
   transform: scaleX(-1)
-  &:active, &.active
-    background-image: url($img-path + '/arrow-white.png')
-
-#t_nextBtn
-  &:active, &.active
-    background-image: url($img-path + '/arrow-white.png')
 
 #t_reloadBtn
   width: 18px
-  background-image: url($img-path + '/reload-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/reload-white.png')
-
-#t_homeBtn
-  width: 18px
-  background-image: url($img-path + '/house-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/house-white.png')
+  background-image: url($img-path + '/reload-white.png')
 
 #t_topPanelCommon
   height: 33px
@@ -79,46 +82,34 @@ html
 
 #t_fixBtn
   width: 14px
-  background-image: url($img-path + '/fix-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/fix-white.png')
+  background-image: url($img-path + '/fix-white.png')
 
 #t_newBtn
   -webkit-flex: 1
-  background-image: url($img-path + '/new-grey.png')
-  &:active
-    background-image: url($img-path + '/new-white.png')
+  background-image: url($img-path + '/new-white.png')
 
 #t_resizeBtn
   width: 7px
   cursor: e-resize
-  background-image: url($img-path + '/resize-grey.png')
-  &:active
-    background-image: url($img-path + '/resize-white.png')
+  background-image: url($img-path + '/resize-white.png')
 
 #t_bottomPanel
   height: 33px
   background-color: #222
   position: relative
-  box-shadow: rgba(50, 50, 50, 0.3) 0px -2px 1px
   display: -webkit-flex
   -webkit-box-orient: horizontal
 
 #t_settingsBtn
   width: 23px
-  background-image: url($img-path + '/key-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/key-white.png')
+  background-image: url($img-path + '/key-white.png')
 
 #t_spacerBtn
   -webkit-flex: 1
 
 #t_tinyModeBtn
   width: 15px
-  /* 5px;*/
-  background-image: url($img-path + '/three-squares-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/three-squares-white.png')
+  background-image: url($img-path + '/three-squares-white.png')
 
 #t_content
   height: 100%
@@ -133,24 +124,7 @@ html
   height: 100%
   width: 1px
   background-color: #AAA
-  /*display: -webkit-box;*/
   display: none
-
-/*
- *#t_scrollbar{
- *	position: absolute;
- *	height: 100%;
- *	background-color: red;
- *	width: 5px;
- *	right: 5px;
- *	top: 0;
- *}
- *
- *#t_scrollbarhandler{
- *	height: 30px;
- *	width: 100%;
- *	background-color: blue;
- *}*/
 
 /* Item*/
 
@@ -160,8 +134,7 @@ html
   font-size: 13px
   background-color: white
   border-top: 1px solid #AAA
-  /*border-radius: 2px;
-   *margin: 3px 0px 3px 4px;*/
+  border-right: 1px solid #EEE
   text-overflow: ellipsis
   overflow: hidden
   white-space: nowrap
@@ -179,25 +152,34 @@ html
     .close
       display: block
 
-  &.active
+  &.active, &.active:hover
     background-color: white
     background-color: #D1E2E0
+    border-right: 1px solid #D1E2E0
 
-    &:hover
-      background-color: white
-      background-color: #D1E2E0
+  &.ui-sortable-placeholder
+    background-color: transparent
+
+  &.ui-sortable-helper
+    border-bottom: 1px solid #AAA
+
+  &.condensed
+    padding: 2px 8px
+    .close
+      top: 4px
 
   .t_title
     padding: 4px 0px 4px 5px
     color: black
 
   .t_ico
-    height: 16px
+    height: 16px !important
     padding: 0
     margin: 0
     width: auto
     border-radius: 0
     display: inline
+    vertical-align: bottom
 
   .close
     width: 16px
@@ -212,123 +194,6 @@ html
 
     &:hover
       background-image: url($img-path + '/cross-red.png')
-
-.ui-draggable-dragging
-  width: 16px
-  box-shadow: 0px 0px 8px rgba(50, 50, 50, 0.4)
-
-/* Preferences*/
-
-#t_overlay
-  background-color: rgba(0, 0, 0, 0.22)
-  height: 100%
-  width: 100%
-  position: fixed
-  z-index: 2147483647
-
-#t_settings
-  height: 80%
-  width: 80%
-  margin: 5% 10% 0 10%
-  border-radius: 2px
-  box-shadow: rgba(50, 50, 50, 0.22) 0px 0px 30px
-  font-family: 'Segoe UI', Tahoma, sans-serif !important
-  background-color: white
-  display: -webkit-box
-  -webkit-box-orient: vertical
-
-#t_settingsHeader
-  background-color: #222
-  color: white
-  padding: 10px 20px
-  border-radius: 2px 2px 0 0
-  h1
-    font-size: 2em
-    font-weight: bold
-  h2
-    font-style: italic
-    font-weight: normal
-    font-size: 1.23em
-    padding-left: 40px
-
-#t_settingsContent
-  color: black
-  display: -webkit-box
-  -webkit-box-flex: 1
-  -webkit-box-orient: horizontal
-
-#t_settingsNavigation
-  padding: 20px 0
-  margin-top: 40px
-
-  ul
-    list-style: none
-    margin: 0
-    padding: 0
-
-  li
-    border-left: 5px solid transparent
-    color: #777
-    padding: 5px 15px
-    cursor: pointer
-    margin: 0
-
-    &.active
-      border-left-color: #333
-      color: #333
-
-#t_settingsDetails
-  -webkit-box-flex: 1
-  padding: 10px 20px 20px 20px
-
-  ul
-    padding-left: 40px
-    list-style: disc
-
-  input[type='checkbox']
-    -webkit-appearance: none
-    -webkit-user-select: none
-    background-image: -webkit-linear-gradient(#f0f0f0, #f0f0f0 38%, #e0e0e0)
-    border-color: rgba(0, 0, 0, 0.3)
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.95)
-    width: 13px
-    height: 13px
-    border: 1px solid rgba(0, 0, 0, 0.25)
-    border-radius: 2px
-    margin: 0 5px 0 0
-    padding: 0
-    bottom: 2px
-    position: relative
-    vertical-align: middle
-
-    &:checked::before
-      -webkit-user-select: none
-      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAcklEQVQY02NgwA/YoJgoEA/Es4DYgJBCJSBeD8SboRinBiYg7kZS2IosyQ/Eakh8LySFq4FYHFlxGRBvBOJYqMRqJMU+yApNkSRAeC0Sux3dfSCTetE0wKyXxOWhMKhTYIr9CAUXyJMzgLgBagBBgDPGAI2LGdNt0T1AAAAAAElFTkSuQmCC')
-      background-size: 100% 100%
-      content: ''
-      display: block
-      height: 100%
-      width: 100%
-
-  label
-    display: block
-    margin: 1em 0
-    color: black
-
-  p
-    margin: 1em 0
-    color: black
-    
-  h2
-    font-weight: normal
-    font-size: 1.4em
-    margin: 0 0 20px 0
-    padding: 0 0 10px 0
-    border-bottom: 1px solid #DDD
-
-#t_copyright
-  color: #A2A2A2
-  padding: 20px
 
 /* Util*/
 

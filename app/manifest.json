@@ -3,13 +3,13 @@
 
   "name": "Veritabs",
   "description": "Organize your tabs vertically",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "minimum_chrome_version": "21.0",
 
-  "icons": { 
+  "icons": {
     "16": "img/icons/icon16.png",
     "48": "img/icons/icon48.png",
-    "128": "img/icons/icon128.png" 
+    "128": "img/icons/icon128.png"
   },
 
   "permissions": [
@@ -18,49 +18,72 @@
   ],
 
   "background": {
-    "scripts": ["js/background.js"],
+    "scripts": [
+      "components/jquery/jquery.js",
+      "components/lodash/dist/lodash.js",
+      "js/background/data_storage.js",
+      "js/background/state.js",
+      "js/background/tabs_manager.js",
+      "js/background/background.js"
+    ],
     "persistent": true
   },
+
+  "options_page": "views/options.html",
 
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "css": ["styles/style.css"],
-      "js": ["lib/jquery.js", "lib/jqueryui.js", "js/script.js"],
+      "css": [
+        "styles/style.css"
+      ],
+      "js": [
+        "components/jquery/jquery.js",
+        "components/jquery-ui/ui/jquery-ui.js",
+        "components/angular/angular.js",
+        "lib/ui-sortable.js",
+
+        "js/script/app.js",
+
+        "js/script/controllers/panel_controller.js",
+        "js/script/directives/resize.js",
+        "js/script/directives/show.js",
+        "js/script/directives/tab_hover.js",
+        "js/script/directives/scroll.js",
+        "js/script/services/port.js",
+        "js/script/filters/icon.js",
+
+        "js/script/launch.js"
+      ],
       "run_at": "document_end"
     }
   ],
 
   "browser_action": {
-    "default_icon": {                    
-      "19": "img/icons/icon19.png",    
-      "38": "img/icons/icon38.png"     
+    "default_icon": {
+      "19": "img/icons/icon19.png",
+      "38": "img/icons/icon38.png"
     },
-    "default_title": "Veritabs",      
-    "default_popup": "views/popup.html"        
+    "default_title": "Veritabs",
+    "default_popup": "views/popup.html"
   },
 
   "web_accessible_resources": [
     "img/cross-grey.png",
     "img/cross-red.png",
     "img/empty.png",
-    "img/fix-grey.png",
     "img/fix-white.png",
-    "img/new-grey.png",
     "img/new-white.png",
-    "img/resize-grey.png",
     "img/resize-white.png",
-    "img/key-grey.png",
     "img/key-white.png",
-    "img/arrow-grey.png",
     "img/arrow-white.png",
-    "img/house-grey.png",
     "img/house-white.png",
-    "img/reload-grey.png",
     "img/reload-white.png",
-    "img/three-squares-grey.png",
     "img/three-squares-white.png",
-    "img/icons/icon19off.png",    
-    "img/icons/icon38off.png"
+    "img/icons/icon19off.png",
+    "img/icons/icon38off.png",
+    "img/background.png",
+
+    "views/options.html"
   ]
 }

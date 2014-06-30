@@ -1,0 +1,85 @@
+/* Preferences*/
+
+$nav-pill-color: #999
+$nav-pill-active-color: #222
+$img-path: "chrome-extension://__MSG_@@extension_id__/img"
+
+body
+  margin: 0
+  font-family: 'Segoe UI', Tahoma, sans-serif !important
+
+.options-header
+  background-image: url($img-path + '/options-background.png')
+  color: white
+  padding-top: 20px
+  padding-bottom: 20px
+
+  h1
+    font-size: 2.5em
+    font-weight: bold
+
+  h2
+    font-style: italic
+    font-weight: normal
+    font-size: 1.23em
+
+.options-content
+  h2
+    margin: 15px 0 20px 0
+
+  h3
+    font-size: 1.4em
+
+  .settings
+    .form-group
+      margin-bottom: 5px
+
+    label
+      font-weight: normal
+
+// General
+
+.nav-pills
+  & > li
+    border-left: 5px solid transparent
+
+    & > a
+      color: $nav-pill-color
+
+    &.active, &.active:hover
+      border-color: $nav-pill-active-color
+
+      & > a
+        background-color: transparent
+        color: $nav-pill-active-color
+
+    &:hover
+      & > a
+        background-color: transparent
+        color: $nav-pill-color
+
+
+input[type='checkbox']
+  -webkit-appearance: none
+  -webkit-user-select: none
+  background-image: -webkit-linear-gradient(#f0f0f0, #f0f0f0 38%, #e0e0e0)
+  border-color: rgba(0, 0, 0, 0.3)
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.95)
+  width: 13px
+  height: 13px
+  border: 1px solid rgba(0, 0, 0, 0.25)
+  border-radius: 2px
+  margin: 0 5px 0 0
+  padding: 0
+  bottom: 2px
+  position: relative
+  vertical-align: middle
+
+  &:checked::before
+    -webkit-user-select: none
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAcklEQVQY02NgwA/YoJgoEA/Es4DYgJBCJSBeD8SboRinBiYg7kZS2IosyQ/Eakh8LySFq4FYHFlxGRBvBOJYqMRqJMU+yApNkSRAeC0Sux3dfSCTetE0wKyXxOWhMKhTYIr9CAUXyJMzgLgBagBBgDPGAI2LGdNt0T1AAAAAAElFTkSuQmCC')
+    background-size: 100% 100%
+    content: ''
+    display: block
+    height: 100%
+    width: 100%
