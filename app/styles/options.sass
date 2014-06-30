@@ -2,13 +2,14 @@
 
 $nav-pill-color: #999
 $nav-pill-active-color: #222
+$img-path: "chrome-extension://__MSG_@@extension_id__/img"
 
 body
   margin: 0
   font-family: 'Segoe UI', Tahoma, sans-serif !important
 
 .options-header
-  background-color: #222
+  background-image: url($img-path + '/options-background.png')
   color: white
   padding-top: 20px
   padding-bottom: 20px
@@ -24,7 +25,7 @@ body
 
 .options-content
   h2
-    margin: 5px 0 20px 0
+    margin: 15px 0 20px 0
 
   .settings
     .form-group
