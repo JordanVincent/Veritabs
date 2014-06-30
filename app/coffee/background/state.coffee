@@ -10,6 +10,7 @@ class State
   tiny:         false # the tiny mode
   options:
     right:      false # position the bar on the right
-    fullscreen: false # show only on fullscreen mode
+    fullscreen: false # show the bar only on fullscreen mode
+    condensed:  false # tabs' height is reduced
 
 window.state = new State

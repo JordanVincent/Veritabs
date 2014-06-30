@@ -46,7 +46,7 @@
               <div
                 ng-repeat="tab in state.tabs"
                 class="t_item"
-                ng-class="{active:tab.active}"
+                ng-class="{active:tab.active, condensed: state.options.condensed}"
                 ng-style="{'left': tab.hover && state.options.right ? -185 : 0 , 'width': tab.hover ? 200 : 'auto' }"
                 ng-model="tab"
                 ng-click="$parent.activateTab(tab)"
