@@ -1,7 +1,6 @@
-Veritabs.controller 'PanelController', ($scope, $window, $location, Port) ->
+Veritabs.controller 'PanelController', ($scope, $window, Port) ->
 
   fullscreenEnabled = ->
-    return true
     window.innerWidth is screen.width and
     window.innerHeight is screen.height
 
@@ -35,7 +34,7 @@ Veritabs.controller 'PanelController', ($scope, $window, $location, Port) ->
           index: index
 
 
-    $scope.clickNewBtn = ->
+    $scope.newTab = ->
       Port.send 'new'
 
     # Tab actions
@@ -56,8 +55,9 @@ Veritabs.controller 'PanelController', ($scope, $window, $location, Port) ->
 
     $scope.navigatePrevious = ->
       $window.history.back()
+
     $scope.navigateNext = ->
-      $window.forward.back()
+      $window.history.forward()
+
     $scope.navigateReload = ->
-      $location.reload()
-    $scope.navigateHome = ->
+      $window.location.reload()

@@ -13,12 +13,11 @@
         <div id="t_panel">
           <div id="t_topPanel">
             <div id="t_topPanelFullscreen"
-                 ng-show="fullscreenEnabled"
+                 ng-show="fullscreenEnabled && !state.tiny"
             >
               <div id="t_prevBtn" class="t_barBtn" ng-click="navigatePrevious()"></div>
               <div id="t_nextBtn" class="t_barBtn" ng-click="navigateNext()"></div>
               <div id="t_reloadBtn" class="t_barBtn" ng-click="navigateReload()"></div>
-              <div id="t_homeBtn" class="t_barBtn" ng-click="navigateHome()"></div>
             </div>
             <div id="t_topPanelCommon"
                  ng-style="{'-webkit-flex-direction': (state.options.right ? 'row-reverse' : 'row')}"
@@ -34,7 +33,7 @@
               <div
                 id="t_newBtn"
                 class="t_barBtn"
-                ng-click="clickNewBtn()">
+                ng-click="newTab()">
               </div>
               <div
                 id="t_resizeBtn"

@@ -46,11 +46,20 @@ html, body
   height: 33px
   display: -webkit-flex
   -webkit-flex-direction: row
+  border-bottom: 1px solid #333
   .t_barBtn
     -webkit-flex: 1
 
 .t_barBtn
   opacity: 0.3
+  cursor: pointer
+
+  &, &:hover, &:active, &.active
+    background-color: transparent
+
+  &:hover
+    opacity: 0.5
+
   &:active, &.active
     opacity: 1
 
@@ -65,10 +74,6 @@ html, body
 #t_reloadBtn
   width: 18px
   background-image: url($img-path + '/reload-white.png')
-
-#t_homeBtn
-  width: 18px
-  background-image: url($img-path + '/house-white.png')
 
 #t_topPanelCommon
   height: 33px
@@ -119,24 +124,7 @@ html, body
   height: 100%
   width: 1px
   background-color: #AAA
-  /*display: -webkit-box;*/
   display: none
-
-/*
- *#t_scrollbar{
- *  position: absolute;
- *  height: 100%;
- *  background-color: red;
- *  width: 5px;
- *  right: 5px;
- *  top: 0;
- *}
- *
- *#t_scrollbarhandler{
- *  height: 30px;
- *  width: 100%;
- *  background-color: blue;
- *}*/
 
 /* Item*/
 
@@ -147,8 +135,6 @@ html, body
   background-color: white
   border-top: 1px solid #AAA
   border-right: 1px solid #EEE
-  /*border-radius: 2px;
-   *margin: 3px 0px 3px 4px;*/
   text-overflow: ellipsis
   overflow: hidden
   white-space: nowrap
