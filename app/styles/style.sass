@@ -42,36 +42,33 @@ html, body
   -webkit-box-orient: vertical
   /*-webkit-box-orient: horizontal;*/
 
-#t_topPanelFullS
+#t_topPanelFullscreen
   height: 33px
   display: -webkit-flex
-  -webkit-box-orient: horizontal
+  -webkit-flex-direction: row
+  .t_barBtn
+    -webkit-flex: 1
+
+.t_barBtn
+  opacity: 0.3
+  &:active, &.active
+    opacity: 1
 
 #t_prevBtn, #t_nextBtn
   width: 12px
-  background-image: url($img-path + '/arrow-grey.png')
+  background-image: url($img-path + '/arrow-white.png')
 
 #t_prevBtn
   -webkit-transform: scaleX(-1)
   transform: scaleX(-1)
-  &:active, &.active
-    background-image: url($img-path + '/arrow-white.png')
-
-#t_nextBtn
-  &:active, &.active
-    background-image: url($img-path + '/arrow-white.png')
 
 #t_reloadBtn
   width: 18px
-  background-image: url($img-path + '/reload-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/reload-white.png')
+  background-image: url($img-path + '/reload-white.png')
 
 #t_homeBtn
   width: 18px
-  background-image: url($img-path + '/house-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/house-white.png')
+  background-image: url($img-path + '/house-white.png')
 
 #t_topPanelCommon
   height: 33px
@@ -80,22 +77,16 @@ html, body
 
 #t_fixBtn
   width: 14px
-  background-image: url($img-path + '/fix-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/fix-white.png')
+  background-image: url($img-path + '/fix-white.png')
 
 #t_newBtn
   -webkit-flex: 1
-  background-image: url($img-path + '/new-grey.png')
-  &:active
-    background-image: url($img-path + '/new-white.png')
+  background-image: url($img-path + '/new-white.png')
 
 #t_resizeBtn
   width: 7px
   cursor: e-resize
-  background-image: url($img-path + '/resize-grey.png')
-  &:active
-    background-image: url($img-path + '/resize-white.png')
+  background-image: url($img-path + '/resize-white.png')
 
 #t_bottomPanel
   height: 33px
@@ -106,19 +97,14 @@ html, body
 
 #t_settingsBtn
   width: 23px
-  background-image: url($img-path + '/key-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/key-white.png')
+  background-image: url($img-path + '/key-white.png')
 
 #t_spacerBtn
   -webkit-flex: 1
 
 #t_tinyModeBtn
   width: 15px
-  /* 5px;*/
-  background-image: url($img-path + '/three-squares-grey.png')
-  &:active, &.active
-    background-image: url($img-path + '/three-squares-white.png')
+  background-image: url($img-path + '/three-squares-white.png')
 
 #t_content
   height: 100%

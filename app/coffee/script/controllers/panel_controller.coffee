@@ -1,4 +1,14 @@
-Veritabs.controller 'PanelController', ($scope, Port) ->
+Veritabs.controller 'PanelController', ($scope, $window, $location, Port) ->
+
+  fullscreenEnabled = ->
+    return true
+    window.innerWidth is screen.width and
+    window.innerHeight is screen.height
+
+  $scope.fullscreenEnabled = fullscreenEnabled()
+  $(window).on 'resize', ->
+    $scope.$apply ->
+      $scope.fullscreenEnabled = fullscreenEnabled()
 
   Port.connect().then (state) ->
 
@@ -31,15 +41,23 @@ Veritabs.controller 'PanelController', ($scope, Port) ->
     # Tab actions
 
     $scope.closeTab = (tab) ->
-      console.log 'close'
       Port.send 'close',
         id: tab.id
 
     $scope.activateTab = (tab) ->
-      console.log 'activate'
       Port.send 'activate',
         id: tab.id
 
     $scope.refresh = ->
       Port.send 'state',
         state: $scope.state
+
+    # Navigation
+
+    $scope.navigatePrevious = ->
+      $window.history.back()
+    $scope.navigateNext = ->
+      $window.forward.back()
+    $scope.navigateReload = ->
+      $location.reload()
+    $scope.navigateHome = ->

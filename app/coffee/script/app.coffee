@@ -1,6 +1,4 @@
-# Copyright (c) 2013 Jordan Vincent. All rights reserved.
 (($) ->
-
   window.Veritabs = angular.module('veritabs', ['ui.sortable'])
 
   Veritabs.constant 'TINY_WIDTH', 30

@@ -22,10 +22,10 @@ module.exports = (grunt) ->
 
     compass:
       main:
-        options: 
+        options:
           sassDir: '<%= folders.src %>/styles'
           cssDir: '<%= folders.dest %>/styles'
-          environment: 'production'   
+          environment: 'production'
 
     copy:
       main:
@@ -37,7 +37,7 @@ module.exports = (grunt) ->
           {expand: true, cwd: '<%= folders.src %>/',       src: ['manifest.json'], dest: '<%= folders.dest %>/'}
         ]
 
-    clean: 
+    clean:
       main: ['<%= folders.dest %>/**']
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'

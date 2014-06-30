@@ -11,5 +11,3 @@ Veritabs.directive 'tabHover', ->
 
     , (e) ->
       scope.$apply scope.tab.hover = false
-
-     
