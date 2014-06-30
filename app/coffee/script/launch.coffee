@@ -6,17 +6,22 @@
       ng-model="state"
       id="t_sidebar"
       show="state"
-      ng-style="{'width': state.tiny ? 30 : state.width}"
+      ng-style="{width: (state.tiny ? 30 : state.width),
+                 right: (state.options.right ? 0 : 'auto')}"
     >
       <div id="t_inner">
         <div id="t_panel">
           <div id="t_topPanel">
-            <div id="t_topPanelCommon">
+            <div id="t_topPanelCommon"
+                 ng-style="{'-webkit-flex-direction': (state.options.right ? 'row-reverse' : 'row')}"
+            >
               <div
                 id="t_fixBtn" class="t_barBtn"
                 ng-hide="state.tiny"
                 ng-click="state.fixed = !state.fixed; refresh();"
-                ng-class="{active:state.fixed}" >
+                ng-class="{active: state.fixed}"
+                ng-style="{'-webkit-transform': (state.options.right ? 'scale(-1)' : 'none')}"
+              >
               </div>
               <div
                 id="t_newBtn"

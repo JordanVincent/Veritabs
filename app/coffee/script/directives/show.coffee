@@ -2,9 +2,8 @@ Veritabs.directive 'show', ->
 
   scope:
     state: '=show'
-    
-  link: (scope, element, attr) ->
 
+  link: (scope, element, attr) ->
 
     $("html").mousemove (e) ->
 
@@ -28,8 +27,8 @@ Veritabs.directive 'show', ->
         scope.state.fixed or
         (
           (
-            ( not scope.state.options.right and x is 0 ) or 
-            ( scope.state.options.right and x >= document.width - 10 )
+            ( not scope.state.options.right and x is 0 ) or
+            ( scope.state.options.right and x >= $(document).width() - 10 )
           ) and not scope.state.visible
         ) or scope.state.tiny
       ) and scope.state.active # TODO manage the scope.state.active better
@@ -41,9 +40,7 @@ Veritabs.directive 'show', ->
       return false unless scope.state
       (
         (
-          ( not scope.state.options.right and x > scope.state.width ) or 
-          ( scope.state.options.right and x < document.width - scope.state.width )
+          ( not scope.state.options.right and x > scope.state.width ) or
+          ( scope.state.options.right and x < $(document).width() - scope.state.width )
         ) and not scope.state.fixed and not scope.state.resizing and scope.state.visible and not scope.state.tiny
       ) or not scope.state.active # TODO manage the scope.state.active better
-    
-          
