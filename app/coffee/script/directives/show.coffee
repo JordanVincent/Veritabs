@@ -5,7 +5,7 @@ Veritabs.directive 'show', ->
 
   link: (scope, element, attr) ->
 
-    $("html").mousemove (e) ->
+    $(document).mousemove (e) ->
 
       # Open
       if mustOpenPanel(e.pageX)

@@ -17,7 +17,7 @@ Veritabs.directive 'resize', ->
       drag: (e, ui) ->
 
         if scope.state.options.right
-          width = document.width - ui.offset.left
+          width = $(document).width() - ui.offset.left
 
         else
           width = ui.position.left + 15
@@ -26,6 +26,3 @@ Veritabs.directive 'resize', ->
       stop: ->
         scope.$apply scope.state.resizing = false
         scope.refreshFn()
-        
-
-     
